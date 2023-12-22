@@ -25,6 +25,14 @@ class RedisBasicApplicationTests {
         //Person Entity의 @RedisHash에 정의 되어 있는 Keyspace (people)에 속한 키의 갯수를 구함
         repos.count();
 
+        Person retrievedPerson = repos.findById(person.getId()).orElse(null);
+
+        if (retrievedPerson != null) {
+            int age = retrievedPerson.getAge();
+            System.out.println("Retrieved age: " + age);
+        } else {
+            System.out.println("Person not found");
+        }
 
     }
 
